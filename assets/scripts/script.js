@@ -1,53 +1,44 @@
-//TODO : import get al musics, generateMusicItemUsingTemplate, generareMusicUsingInnerHTML dari utils.js
-import {generateMusicItemUsingInnerHTML, generateMusicItemUsingTemplate, getAllMusics} from "./utils.js";
+//TODO: import getAllMusics, generateMusicItemUsingTemplate, generateMusicItemUsingInnerHTML dari utils.js
+
 const drawerButton = document.querySelector('#drawer-button');
 const drawerNavigation = document.querySelector('#navList');
 
-//TODO : dapatkan element tempat dimana music item akan ditampilkan
-const musicListContainer = document.querySelector("#musicList")
+//TODO: dapatkan element tempat dimana music item akan ditampilkan
+const musicListContainer = /* TODO: tambahkan logika untuk mendapatkan elemen '#musicList' */ null;
 
 function setupDrawer() {
-  drawerButton.addEventListener('click', () => {
-    drawerNavigation.classList.toggle('open');
-  });
+    drawerButton.addEventListener('click', () => {
+      drawerNavigation.classList.toggle('open');
+    });
+  
+    document.body.addEventListener('click', (event) => {
+      if (!drawerNavigation.contains(event.target) && !drawerButton.contains(event.target)) {
+        drawerNavigation.classList.remove('open');
+      }
+    });
+  }
 
-  document.body.addEventListener('click', (event) => {
-    if (!drawerNavigation.contains(event.target) && !drawerButton.contains(event.target)) {
-      drawerNavigation.classList.remove('open');
-    }
-  });
+function showWithTemplate(musics) {
+  //TODO: mapping setiap music di musics menggunakan generateMusicItemUsingTemplate
+  //TODO: append elemen-elemen yang dihasilkan ke musicListContainer
 }
 
-function showWithTemplate(musics){
-  const elements = musics.map(generateMusicItemUsingTemplate)
-  musicListContainer.append(...elements)
+function showWithInnerHTML(musics) {
+  //TODO: mapping setiap music di musics menggunakan generateMusicItemUsingInnerHTML
+  //TODO: gabungkan string-string HTML yang dihasilkan dan set sebagai innerHTML dari musicListContainer
 }
-function showWithInnerHTML(musics){
-  //const elements = musics.map((music)=>generateMusicItemUsingInnerHTML(music))
-  const elements = musics.map(generateMusicItemUsingInnerHTML)
-  musicListContainer.innerHTML = elements.join('')
 
+function stopAnotherAudio(currentAudio) {
+  //TODO: dapatkan semua elemen audio dari DOM
+  //TODO: pause semua audio yang bukan currentAudio
 }
-function stopAnotherAudio(currentAudio){
-  const listOfAudioElement= document.querySelectorAll('audio')
-  listOfAudioElement.forEach((audio)=>{
-    if(audio!=currentAudio){
-      audio.pause()
-    }
-  })
-}
+
 function setupOnlyOneAudioIsPlaying() {
   // Function ini dimanfaatkan untuk mengaktifkan satu audio saja.
 
   //TODO: dapatkan semua audio element
-  const listOfAudioElement = document.querySelectorAll('audio')
 
-  listOfAudioElement.forEach((audioElement)=>{
-    audioElement.addEventListener('play',(event)=>{
-      const currentAudio = event.target;
-      stopAnotherAudio(currentAudio)
-    })
-  })
+  //TODO: tambahkan event listener 'play' pada setiap audio element untuk memanggil stopAnotherAudio saat audio diputar
 
   //TODO: dapatkan audio element yang sedang di play
 
@@ -55,19 +46,13 @@ function setupOnlyOneAudioIsPlaying() {
 }
 
 function init() {
-  setupDrawer();
+  //TODO: panggil setupDrawer untuk menginisiasi navigasi drawer
 
-  // Lakukan get musics dan render ke DOM di sini
-  const musics = getAllMusics()
+  //TODO: dapatkan data musics dengan memanggil getAllMusics
 
-  //TODO:show menggunakan innerHTML
-  //showWithInnerHTML(musics)
+  //TODO: render musics ke DOM, pilih antara showWithInnerHTML atau showWithTemplate
 
-
-  //TODO:show menggunakan template
-  showWithTemplate(musics)
-
-  setupOnlyOneAudioIsPlaying();
+  //TODO: panggil setupOnlyOneAudioIsPlaying untuk memastikan hanya satu audio yang dapat diputar sekaligus
 }
 
 init();

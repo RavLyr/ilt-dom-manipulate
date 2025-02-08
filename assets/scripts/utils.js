@@ -63,70 +63,23 @@ export function generateMusicItemUsingTemplate({ id, artLink, title, signature, 
   // Buatlah music item element dengan memanfaatkan <template> pada HTML.
 
   //TODO: dapatkan element template
-  const musicItemTemplate = document.querySelector("#musicitemtemplate")
-//TODO : copy isi element template menggunakan cloneNode beserta isinya ke sebuah elemen baru
-  const element = musicItemTemplate.content.cloneNode(true)
 
-  
+  //TODO: copy isi element template menggunakan cloneNode beserta isinya ke sebuah elemen baru
 
-  //TODO : dapatkan element data-musicid dan set attribute data-musicid dengan id
-  const  article = element.querySelector('[data-musicid]')
-  article.setAttribute('data-musicid', id)
+  //TODO: dapatkan element data-musicid dan set attribute data-musicid dengan id
 
   //TODO: dapatkan element img dan set attribute src dengan artLink
 
-  const musicImage = element.querySelector('#musicImage')
-  musicImage.src = artLink
-  musicImage.alt = title
+  //TODO: dapatkan element music title dan set textContent nya menggunakan title
 
-  //TODO :dapatkan element music title dan set textContent nya menggunakan title
-  const musicTitle = element.querySelector('#musicTitle')
-  musicTitle.textContent = title
+  //TODO: dapatkan element music signature dan set innerHTML nya menggunakan signature
 
-  //TODO : dapatkan element music signature dan set innerHTML nya menggunakan signature
+  //TODO: dapatkan element audio dan set attribute src dengan audioLink
 
-  const musicSignature = element.querySelector('#musicSignature')
-  musicSignature.innerHTML = signature
-  //TODO : dapatkan element audio dan set attribute src dengan audioLink
-
-  const musicAudio = element.querySelector("#musicAudio")
-  musicAudio.src = audioLink
-
-  //TODO : return element
-  return element
+  //TODO: return element
 }
 
 export function generateMusicItemUsingInnerHTML({ id, artLink, title, signature, audioLink }) {
   //TODO: Buatlah music item element dalam bentuk string.
-  return `
-   <article class="music-list__item" data-musicid="${id}">
-              <div class="card">
-                <div class="card-image">
-                  <img
-                    id="musicImage"
-                    src="${artLink}"
-                    alt="${title}"
-                  />
-                </div>
-                <div class="card-body">
-                  <h3 id="musicTitle" class="card-body__title">${title}</h3>
-                  <div id="musicSignature" class="card-body__copyright">
-                    Music by
-                    <a
-                      href="https://pixabay.com/users/ambientaudiovision-25188255/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=186307"
-                      >${signature}</a
-                    >
-                  </div>
-                  <audio
-                    id="musicAudio"
-                    class="music-list__item__audio"
-                    controls
-                    src="${audioLink}"
-                    type="audio/mp3"
-                    preload="none"
-                  ></audio>
-                </div>
-              </div>
-            </article>
-  `
+  return '';
 }
